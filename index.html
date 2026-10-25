@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -184,7 +184,6 @@
       <a href="#projects" data-i18n="nav_projects">المشاريع</a>
       <a href="#certs" data-i18n="nav_certs">الشهادات</a>
       <a href="#contact" data-i18n="nav_contact">تواصل</a>
-      <button class="lang" id="langBtn">EN</button>
     </div>
   </div>
 </nav>
@@ -396,30 +395,15 @@ const T = {
     btn_email:"Email me"
   }
 };
-let lang='ar';
+// البورتفوليو بالإنجليزية فقط: نطبّق النصوص الإنجليزية عند التحميل
 const els=document.querySelectorAll('[data-i18n]');
-T.ar={};els.forEach(e=>T.ar[e.dataset.i18n]=e.innerHTML);
-
-function applyName(l){
-  const h=document.querySelector('.bigname h1');
-  if(l==='en'){h.innerHTML='TAIF<br><span class="solid">ALKHODIDI</span>';}
-  else{h.innerHTML='طيف<br><span class="solid">الخديدي</span>';}
-}
-function setLang(l){
-  lang=l;
-  document.documentElement.lang=l;
-  document.documentElement.dir=l==='ar'?'rtl':'ltr';
-  els.forEach(e=>{
-    if(e.classList.contains('anton'))return; // الاسم يُعالج بدالة خاصة
-    const v=T[l][e.dataset.i18n];
-    if(v!==undefined)e.innerHTML=v;
-  });
-  applyName(l);
-  document.getElementById('langBtn').textContent=l==='ar'?'EN':'عربي';
-  try{localStorage.setItem('lang',l)}catch(e){}
-}
-document.getElementById('langBtn').onclick=()=>setLang(lang==='ar'?'en':'ar');
-try{const s=localStorage.getItem('lang');if(s&&s!=='ar')setLang(s)}catch(e){}
+els.forEach(e=>{
+  if(e.classList.contains('anton'))return; // الاسم يُعالج بدالة خاصة
+  const v=T.en[e.dataset.i18n];
+  if(v!==undefined)e.innerHTML=v;
+});
+// اسم الهيرو بالإنجليزية
+document.querySelector('.bigname h1').innerHTML='TAIF<br><span class="solid">ALKHODIDI</span>';
 
 /* ===== قائمة الجوال ===== */
 const navLinks=document.getElementById('navLinks');
