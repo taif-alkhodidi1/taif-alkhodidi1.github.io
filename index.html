@@ -54,27 +54,31 @@
   .hero{padding:120px 0 40px;position:relative}
   .hero .bigname{position:relative}
   .hero .bigname h1{font-size:clamp(3.2rem,13vw,10rem);line-height:.9;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.22);
-    letter-spacing:2px;margin:0;opacity:0;animation:nameIn 1.1s .1s cubic-bezier(.16,1,.3,1) forwards}
+    letter-spacing:2px;margin:0;opacity:0;animation:nameIn 2.6s .2s ease-out forwards}
   .hero .bigname h1 .solid{color:#e9eaec;-webkit-text-stroke:0}
-  .hero .sub{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:14px;opacity:0;animation:slideIn 1s .55s cubic-bezier(.16,1,.3,1) forwards}
+  .hero .sub{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:14px;opacity:0;animation:slideIn 1s 1.4s cubic-bezier(.16,1,.3,1) forwards}
   .hero .sub .role{font-family:'Space Grotesk',sans-serif;letter-spacing:4px;text-transform:uppercase;font-size:clamp(.8rem,2vw,1.05rem);color:var(--muted)}
   .hero .arrow{color:var(--green);font-size:1.6rem}
   .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;margin-top:40px;align-items:start}
 
-  /* حركة الدخول الدراماتيكية للاسم: يكبر من بعيد مع ضبابية */
+  /* حركة الاسم: يتوضّح من الضبابية فقط، ثابت في مكانه بلا نزول */
   @keyframes nameIn{
-    0%{opacity:0;transform:scale(1.45) translateY(40px);filter:blur(14px)}
-    60%{opacity:1;filter:blur(0)}
-    100%{opacity:1;transform:scale(1) translateY(0);filter:blur(0)}
+    0%{opacity:0;filter:blur(22px)}
+    100%{opacity:1;filter:blur(0)}
   }
-  /* انزلاق قوي للعناصر من الأسفل */
+  /* دخول دراماتيكي قوي للبطاقات: تقترب من العمق مع ضبابية وانزلاق */
+  @keyframes dramaIn{
+    0%{opacity:0;transform:perspective(1000px) translateY(70px) scale(.9);filter:blur(10px)}
+    100%{opacity:1;transform:perspective(1000px) translateY(0) scale(1);filter:blur(0)}
+  }
+  /* انزلاق للعناصر من الأسفل */
   @keyframes slideIn{
     0%{opacity:0;transform:translateY(50px) scale(.96)}
     100%{opacity:1;transform:translateY(0) scale(1)}
   }
   @keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
 
-  .dna{padding:28px 30px;opacity:0;animation:slideIn 1s .7s cubic-bezier(.16,1,.3,1) forwards}
+  .dna{padding:28px 30px;opacity:0;animation:dramaIn 1.1s 1.5s cubic-bezier(.16,1,.3,1) forwards}
   .dna h3{font-family:'Space Grotesk',sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:1rem;margin-bottom:18px}
   .stat{display:flex;gap:10px;align-items:baseline;margin-bottom:6px}
   .stat b{font-size:1.5rem;color:var(--green);font-family:'Space Grotesk',sans-serif}
@@ -82,13 +86,13 @@
   .dna p{color:var(--muted);font-size:.95rem;margin-top:14px}
 
   .edu-skills{display:flex;flex-direction:column;gap:22px}
-  .edu{padding:24px 28px;opacity:0;animation:slideIn 1s .8s cubic-bezier(.16,1,.3,1) forwards}
+  .edu{padding:24px 28px;opacity:0;animation:dramaIn 1.1s 1.65s cubic-bezier(.16,1,.3,1) forwards}
   .edu h3{font-family:'Space Grotesk',sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:.95rem;margin-bottom:12px}
   .edu .row{margin-bottom:12px}
   .edu .row:last-child{margin-bottom:0}
   .edu b{display:block;font-size:.98rem}
   .edu span{color:var(--muted);font-size:.85rem}
-  .skl{padding:24px 28px;opacity:0;animation:slideIn 1s .95s cubic-bezier(.16,1,.3,1) forwards}
+  .skl{padding:24px 28px;opacity:0;animation:dramaIn 1.1s 1.8s cubic-bezier(.16,1,.3,1) forwards}
   .skl h3{font-family:'Space Grotesk',sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:.95rem;margin-bottom:14px}
   .skl .tags{display:flex;flex-wrap:wrap;gap:8px}
   .skl .tag{font-size:.8rem;color:var(--muted);border:1px solid var(--line);background:rgba(255,255,255,.03);padding:5px 12px;border-radius:999px}
